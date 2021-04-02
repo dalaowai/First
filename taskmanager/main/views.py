@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import CustomerForm
+from django.http import HttpResponse
 
 
 def index(request):
@@ -10,13 +11,12 @@ def about(request):
     return render(request, 'main/about.html')
 
 
-def  singin(request):
+def singin(request):
 
-    form = CustomerForm()
-    
     if request.method == 'POST':
-        form = CustomerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            
-    return render(request, 'main/singin.html', {'form':form})
+        email = request.POST.get("email")
+        return HttpResponse("<h2>Опять ты, {0}</h2>".format(email))
+
+    else:
+        form = CustomerForm()
+        return render(request, 'main/singin.html', {'form': form})
