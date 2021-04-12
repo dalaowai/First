@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
+    <span class="hellom">Привет, {{request.user}}</span>
+    <span class="hellom"><a href="{% url 'logout' %}">Выйти</a></span>
     <div class="features">
         <h1>Главная страница</h1>
         <p>Текст на странице</p>
-        <button class="btn btn-warning">Пуньк</button>
+        <button class="btn btn-info">Пуньк</button>
     </div>
 {% endblock %}
